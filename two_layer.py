@@ -19,6 +19,11 @@ Q = 5
 P = 2
 R = 1
 
+# setting interactiveSession()
+# tf.InteractiveSession() ( The only difference with a regular Session is that an InteractiveSession installs itself as the default session on construction. )
+# https://www.tensorflow.org/api_docs/python/tf/InteractiveSession
+sess = tf.InteractiveSession()
+
 # declare placeholder
 X = tf.placeholder(dtype = tf.float32, shape = [None, Q])
 
@@ -35,16 +40,11 @@ W2 = weight(shape = [P, R])
 b2 = bias(shape = [R])
 f2 = tf.matmul(sigm, W2) + b2
 
-# setting Session()
-# tf.Session() ( run tensorflow operations )
-# https://www.tensorflow.org/api_docs/python/tf/Session
-sess = tf.Session()
-
 # If there is tf.Variables in the code, you should initialize the map.
 init_op = tf.global_variables_initializer()
 sess.run(init_op)
 
 # output
-y = sess.run(f2, {X: data })
+y = sess.run(f2, {X: [1,2,2,5,2] })
 # hidden layer's output
-h = sess.run(sigm, {X: data })
+#h = sess.run(sigm, {X: data })
