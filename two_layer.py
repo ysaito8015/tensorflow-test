@@ -36,6 +36,8 @@ b2 = bias(shape = [R])
 f2 = tf.matmul(sigm, W2) + b2
 
 # setting Session()
+# tf.Session() ( run tensorflow operations )
+# https://www.tensorflow.org/api_docs/python/tf/Session
 sess = tf.Session()
 
 # If there is tf.Variables in the code, you should initialize the map.
