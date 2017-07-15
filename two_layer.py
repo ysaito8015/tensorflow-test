@@ -1,4 +1,5 @@
 import tensorflow as tf
+import numpy as np
 
 # define weight
 def weight(shape = []):
@@ -45,6 +46,14 @@ init_op = tf.global_variables_initializer()
 sess.run(init_op)
 
 # output
-y = sess.run(f2, {X: [1,2,2,5,2] })
+# tf.reshape reshape( tensor, shape, name=None)
+# https://www.tensorflow.org/api_docs/python/tf/reshape
+# np.reshate ( resape(a, newshape, order='C')
+# https://docs.scipy.org/doc/numpy/reference/generated/numpy.reshape.html
+y = sess.run(f2, {X: np.array([1,2,2,5,2]).astype(np.float32).reshape(1,5) })
+
+# sess.run returns np.array
+
 # hidden layer's output
 #h = sess.run(sigm, {X: data })
+
